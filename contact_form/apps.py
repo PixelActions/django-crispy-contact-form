@@ -1,6 +1,6 @@
 from django.apps import AppConfig as DjangoAppConfig
 from django.utils.translation import ugettext_lazy as _
-
+from contact_form.conf import settings
 
 class AppConfig(DjangoAppConfig):
     """Configuration for the contact_form app (only for Django v1.7+)"""
@@ -13,8 +13,8 @@ class AppConfig(DjangoAppConfig):
             
             @receiver(contact_form_valid)
             def contact_form_send_email_on_valid(sender, event, ip, site, sender_name, sender_email, email, subject, message, **kwargs):
-                if settings.SEND_BBC_TO:
-                    bcc = [settings.SEND_BBC_TO,]
+                if settings.CONTACT_FORM_SEND_BBC_TO:
+                    bcc = [settings.CONTACT_FORM_SEND_BBC_TO,]
                 else:
                     bcc = []
                 email = EmailMessage(subject="%s: %s" %(sender_name,subject), body=message,#from_email=django_settings.DEFAULT_FROM_EMAIL  we ommit cause it happens automaticlaly
