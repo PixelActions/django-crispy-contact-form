@@ -46,6 +46,6 @@ class ContactFormAppConf(AppConf):
 
     SEND_EMAIL_ON_VALID = getattr(settings, 'CONTACT_FORM_SEND_EMAIL_ON_VALID', False)
     SEND_EMAIL_ON_INVALID = getattr(settings, 'CONTACT_FORM_SEND_EMAIL_ON_INVALID', False)
-    SEND_EMAIL_TO= getattr(settings, 'CONTACT_FORM_SEND_EMAIL_TO', '')
+
     class Meta:
         prefix = 'contact_form'
