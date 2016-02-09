@@ -8,6 +8,7 @@ from appconf import AppConf
 class ContactFormAppConf(AppConf):
 
     USE_CAPTCHA = getattr(settings, 'CONTACT_FORM_USE_CAPTCHA', False)
+    USE_RECAPTCHA = getattr(settings, 'CONTACT_FORM_USE_RECAPTCHA', False)
     USE_SIGNALS = getattr(settings, 'CONTACT_FORM_USE_SIGNALS', False)
     SUCCESS_URL = getattr(settings, 'CONTACT_FORM_SUCCESS_URL', reverse_lazy('contact_form'))
     USE_SITES = getattr(settings, 'CONTACT_FORM_USE_SITES', True)
@@ -43,5 +44,8 @@ class ContactFormAppConf(AppConf):
 
     SUBJECTS_ORDER_BY = getattr(settings, 'settings.CONTACT_FORM_SUBJECTS_ORDER_BY', 'order')
 
+    SEND_EMAIL_ON_VALID = getattr(settings, 'CONTACT_FORM_SEND_EMAIL_ON_VALID', False)
+    SEND_EMAIL_ON_INVALID = getattr(settings, 'CONTACT_FORM_SEND_EMAIL_ON_INVALID', False)
+    SEND_EMAIL_TO= getattr(settings, 'CONTACT_FORM_SEND_EMAIL_TO', '')
     class Meta:
         prefix = 'contact_form'
