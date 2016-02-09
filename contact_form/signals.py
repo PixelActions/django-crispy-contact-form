@@ -1,7 +1,6 @@
 from django.dispatch import Signal
 from django.dispatch import receiver
 from contact_form.conf import settings
-from django.settings import settings as django_settings
 from django.core.mail import EmailMessage
 
 contact_form_valid = Signal(
