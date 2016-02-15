@@ -14,12 +14,14 @@ try:
     #First try importring django-recaptcha field
     from captcha.fields import ReCaptchaField
 except ImportError:
+    raise 'django-crispy-contact-form application required django-recaptcha package'
     #If it fails, try from the captcha field from django-simple-captcha as a fallback
+    '''
     try:
         from captcha.fields import CaptchaField
     except ImportError:
         raise 'django-crispy-contact-form application required django-simple-captcha package'
-
+    '''
 try:
     from crispy_forms.helper import FormHelper
     from crispy_forms.layout import Layout, Fieldset, Button, ButtonHolder, Submit
@@ -109,12 +111,11 @@ class ContactForm(forms.ModelForm):
 
 class ContactFormCaptcha(ContactForm):
     """ContactForm form with captcha"""
-    try:
-        captcha = ReCaptchaField()
-    except:
-        captcha = CaptchaField(label=_('Protection Code'),
-                           error_messages={'required': _('Please enter protection code'),
-                                           'invalid': _('Invalid protection code')})
+    #try:
+    captcha = ReCaptchaField()
+    #except:
+    #    captcha = CaptchaField(label=_('Protection Code'), error_messages={'required': _('Please enter protection code'),
+    #                                       'invalid': _('Invalid protection code')})
 
     def __init__(self, *args, **kwargs):
         """Form initialization method
