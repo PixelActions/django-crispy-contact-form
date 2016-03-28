@@ -31,15 +31,17 @@ class ContactFormView(FormMessageMixin, CreateView):
 
     site = None
 
+    form_class_captcha = ContactFormCaptcha
+    form_class_no_captcha = ContactForm
     def get_form_class(self):
         if hasattr(self.request, 'user'):
             is_authenticated = self.request.user.is_authenticated()
         else:
             is_authenticated = False
         if not is_authenticated and settings.CONTACT_FORM_USE_CAPTCHA:
-            self.form_class = ContactFormCaptcha
+            self.form_class = self.form_class_captcha
         else:
-            self.form_class = ContactForm
+            self.form_class = self.form_class_no_captcha
         return self.form_class
 
     def get_initial(self):
