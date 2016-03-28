@@ -73,7 +73,6 @@ class ContactForm(forms.ModelForm):
         self.helper = FormHelper()
         layout = Layout(
             Fieldset(
-                _('Contact form'),
                 'subject',
                 'sender_name',
                 'sender_email',
@@ -127,7 +126,6 @@ class ContactFormCaptcha(ContactForm):
         self.helper = FormHelper()
         layout = Layout(
             Fieldset(
-                _('Contact form'),
                 'subject',
                 'sender_name',
                 'sender_email',
